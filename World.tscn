@@ -880,7 +880,10 @@ tile_set = SubResource("TileSet_wygdx")
 y_sort_enabled = true
 
 [node name="Srac" parent="Ovrwrld" instance=ExtResource("2_2dftf")]
-position = Vector2(143, 94)
+position = Vector2(144, 96)
+
+[node name="Camera2D" type="Camera2D" parent="Ovrwrld/Srac"]
+position_smoothing_enabled = true
 
 [node name="Bushes" type="Node2D" parent="Ovrwrld"]
 y_sort_enabled = true
