@@ -863,9 +863,8 @@ metadata/_edit_lock_ = true
 [node name="Backround_Grass" type="Sprite2D" parent="."]
 texture_repeat = 2
 texture = ExtResource("1_bcbcq")
-centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 320, 180)
+region_rect = Rect2(0, 0, 1000, 1000)
 metadata/_edit_lock_ = true
 
 [node name="SandPathTileMap" type="TileMapLayer" parent="."]
@@ -883,7 +882,6 @@ y_sort_enabled = true
 position = Vector2(160, 88)
 
 [node name="Camera2D" type="Camera2D" parent="Ovrwrld/Srac"]
-limit_smoothed = true
 
 [node name="Bushes" type="Node2D" parent="Ovrwrld"]
 y_sort_enabled = true
