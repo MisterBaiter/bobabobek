@@ -1,11 +1,26 @@
 [gd_scene load_steps=7 format=3 uid="uid://blpu2mcwrnrol"]
 
 [ext_resource type="Script" uid="uid://hwqpgiopcuce" path="res://Player/srac.gd" id="1_o34jw"]
-[ext_resource type="Texture2D" uid="uid://xkrwp8nbvjgf" path="res://Player/postava_nova/IDLE/idle_down.png" id="2_o34jw"]
+[ext_resource type="Texture2D" uid="uid://c65f3t2mv2opx" path="res://Player/postava_nova/IDLE/idle_down.png" id="2_o34jw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bcbcq"]
 radius = 4.0
 height = 14.0
+
+[sub_resource type="Animation" id="Animation_6hp23"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_o34jw"]
 resource_name = "idle_down"
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_6hp23"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6hp23"]
