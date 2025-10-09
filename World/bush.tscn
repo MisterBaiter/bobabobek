@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://diddorymk6i7j" path="res://World/Bush.png" id="1_u11mq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u11mq"]
-radius = 8.0
+radius = 7.0
+height = 18.0
 
 [node name="Bush" type="StaticBody2D"]
 
@@ -12,5 +13,6 @@ position = Vector2(0, -4)
 texture = ExtResource("1_u11mq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_u11mq")

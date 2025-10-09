@@ -1,15 +1,16 @@
 extends CharacterBody2D
 
 @export var speed = 130
-@onready var animationPlayer = $AnimationPlayer
-@onready var sprite = $Sprite2D  # Assuming you have a Sprite2D node
+@onready var animationPlayer = $AnimationPlayer #Za předpokladu, že nemám AnimationTree??
+@onready var sprite = $Sprite2D
 var last_direction := "Down"
 var is_attacking := false
-var attack_cooldown := 0.3  # Adjust as needed
+var attack_cooldown := 0.3
 var attack_timer := 0.0
 
 func _onready():
 	$Camera2D.make_current()
+	
 
 func get_input():
 	if is_attacking:  # Lock movement during attack
