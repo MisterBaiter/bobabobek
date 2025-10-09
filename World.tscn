@@ -881,8 +881,6 @@ y_sort_enabled = true
 [node name="Srac" parent="Ovrwrld" instance=ExtResource("2_2dftf")]
 position = Vector2(160, 88)
 
-[node name="Camera2D" type="Camera2D" parent="Ovrwrld/Srac"]
-
 [node name="Bushes" type="Node2D" parent="Ovrwrld"]
 y_sort_enabled = true
 
