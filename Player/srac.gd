@@ -9,7 +9,7 @@ var is_moving: bool = false
 var is_attacking: bool = false
 
 var speed: int =  175
-var attack_cooldown := 0.3
+var attack_cooldown := 0.5
 var attack_timer := 0.0
 
 # při spuštění:
@@ -58,27 +58,36 @@ func setup_directional_animation(sprite_frames: SpriteFrames, anim_name: String,
 		sprite_frames.add_frame(anim_name, atlas, frame_duration)
 
 func _physics_process(delta):
+	if is_attacking:
+		attack_timer -= delta
+		if attack_timer <= 0:
+			is_attacking = false
+			
 	# Input směru
 	var input_direction = Vector2.ZERO
-	input_direction.x = Input.get_axis("ui_left", "ui_right")
-	input_direction.y = Input.get_axis("ui_up", "ui_down")
+	if not is_attacking:
+		input_direction.x = Input.get_axis("ui_left", "ui_right")
+		input_direction.y = Input.get_axis("ui_up", "ui_down")
+		
+		if input_direction.length() > 0:
+			input_direction = input_direction.normalized()
 	
-	if input_direction.length() > 0:
-		input_direction = input_direction.normalized()
+		velocity = input_direction * speed
 	
-	velocity = input_direction * speed
+	if Input.is_action_just_pressed("ui_attack") and not is_attacking:
+			is_attacking = true
+			attack_timer = attack_cooldown
+			#velocity = Vector2.ZERO
 	
 	update_animation(input_direction)
-	
-	# pohyb postavy
-	move_and_slide()
+	move_and_slide() # pohyb postavy
 
 func update_animation(input_direction: Vector2):
 	# Determine direction
 	var new_direction = current_direction
 	var new_is_moving = input_direction.length() > 0
 	
-	if new_is_moving:
+	if new_is_moving and not is_attacking: #Updatne jen když neutočí jinak to zase nebude fumgovat retarde
 		# Prioritize horizontal movement for left/right, otherwise use vertical
 		if abs(input_direction.x) > abs(input_direction.y):
 			new_direction = Direction.RIGHT if input_direction.x > 0 else Direction.LEFT
@@ -89,6 +98,7 @@ func update_animation(input_direction: Vector2):
 	if new_direction != current_direction or new_is_moving != is_moving:
 		current_direction = new_direction
 		is_moving = new_is_moving
+		
 		play_current_animation()
 
 func play_current_animation():
@@ -107,9 +117,11 @@ func play_current_animation():
 			direction_name = "right"
 
 	# vybere animaci na základě směru a akce
-	if is_moving:
-		animation_name = "run_" + direction_name  # Changed from "walk_" to "run_" to match your animations
-	else:
+	if is_attacking: #nejvyšší priorita akce
+		animation_name = "attack_" + direction_name 
+	elif is_moving: #střední priorita akce
+		animation_name = "run_" + direction_name
+	else: #nejžší priorita akce
 		animation_name = "idle_" + direction_name
 
 	# přehraje animaci
