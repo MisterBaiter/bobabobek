@@ -77,7 +77,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_attack") and not is_attacking: #protekce proti spamu, možná pak odendat uvidíme
 			is_attacking = true
 			attack_timer = attack_cooldown
-			#velocity = Vector2.ZERO
+			velocity = Vector2.ZERO
 	
 	update_animation(input_direction)
 	move_and_slide() # pohyb postavy
