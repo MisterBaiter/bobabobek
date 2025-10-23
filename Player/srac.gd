@@ -34,6 +34,12 @@ func setup_animations():
 	setup_directional_animation(sprite_frames, "run_right", preload("res://Player/postava_nova/RUN/run_right.png"), 8, 0.5)
 	setup_directional_animation(sprite_frames, "run_up", preload("res://Player/postava_nova/RUN/run_up.png"), 8, 0.5)
 
+	#Vytvoření všech animačních možností pro ATTACK
+	setup_directional_animation(sprite_frames, "attack_down", preload("res://Player/postava_nova/ATTACK 1/attack1_down.png"), 8, 0.5)
+	setup_directional_animation(sprite_frames, "attack_left", preload("res://Player/postava_nova/ATTACK 1/attack1_left.png"), 8, 0.5)
+	setup_directional_animation(sprite_frames, "attack_right", preload("res://Player/postava_nova/ATTACK 1/attack1_right.png"), 8, 0.5)
+	setup_directional_animation(sprite_frames, "attack_up", preload("res://Player/postava_nova/ATTACK 1/attack1_up.png"), 8, 0.5)
+
 	animated_sprite.sprite_frames = sprite_frames
 	animated_sprite.play("idle_down") #default animace idle down
 
