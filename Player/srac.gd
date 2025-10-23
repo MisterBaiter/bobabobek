@@ -74,7 +74,7 @@ func _physics_process(delta):
 	
 		velocity = input_direction * speed
 	
-	if Input.is_action_just_pressed("ui_attack") and not is_attacking:
+	if Input.is_action_just_pressed("ui_attack") and not is_attacking: #protekce proti spamu, možná pak odendat uvidíme
 			is_attacking = true
 			attack_timer = attack_cooldown
 			#velocity = Vector2.ZERO
@@ -99,7 +99,7 @@ func update_animation(input_direction: Vector2):
 		current_direction = new_direction
 		is_moving = new_is_moving
 		
-		play_current_animation()
+	play_current_animation()
 
 func play_current_animation():
 	var animation_name = ""

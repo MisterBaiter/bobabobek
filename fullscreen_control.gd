@@ -1,5 +1,7 @@
 extends CheckButton
 
+func _ready():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _on_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
