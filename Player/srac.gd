@@ -73,7 +73,7 @@ func _physics_process(delta):
 			input_direction = input_direction.normalized()
 	
 		velocity = input_direction * speed
-	
+	# směr útoku podle myši!!! není hotovo
 	if Input.is_action_just_pressed("ui_attack") and not is_attacking: #protekce proti spamu, možná pak odendat uvidíme
 			is_attacking = true
 			attack_timer = attack_cooldown
