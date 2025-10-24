@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d1ce562piq15t"]
+[gd_scene load_steps=13 format=4 uid="uid://d1ce562piq15t"]
 
 [ext_resource type="PackedScene" uid="uid://b2xvgakp7r2uj" path="res://World/bush.tscn" id="1_2dftf"]
 [ext_resource type="Texture2D" uid="uid://c8dwc7n0qt3hr" path="res://World/GrassBackground.png" id="1_bcbcq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dbvemtyxmn32s" path="res://World/DirtTileset.png" id="2_js7pq"]
 [ext_resource type="Texture2D" uid="uid://cefcvddyatfe5" path="res://World/CliffTileset.png" id="3_eu7l1"]
 [ext_resource type="PackedScene" uid="uid://d0h37aga8shlr" path="res://World/grass.tscn" id="6_p1v5b"]
+[ext_resource type="PackedScene" uid="uid://dvk6cqtgapx3e" path="res://menu2.tscn" id="7_wygdx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_js7pq"]
 resource_name = "Sand"
@@ -925,3 +926,7 @@ position = Vector2(138, 3)
 
 [node name="Grass8" parent="Ovrwrld/Grass" instance=ExtResource("6_p1v5b")]
 position = Vector2(267, 112)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pausemenu" parent="CanvasLayer" instance=ExtResource("7_wygdx")]

@@ -1,0 +1,176 @@
+[gd_scene load_steps=12 format=3 uid="uid://dvk6cqtgapx3e"]
+
+[ext_resource type="FontFile" uid="uid://x28516a2l5m4" path="res://alagard.ttf" id="1_kmvv6"]
+[ext_resource type="Script" uid="uid://clkfcmlxrun7j" path="res://menu_2.gd" id="1_qwpam"]
+[ext_resource type="Shader" uid="uid://btbd6nepwyrc3" path="res://menu2.gdshader" id="2_2u7t2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6dnv"]
+shader = ExtResource("2_2u7t2")
+shader_parameter/lod = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ck2w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwpam"]
+bg_color = Color(0.737193, 0.737193, 0.737193, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u7t2"]
+bg_color = Color(0.470076, 0.470076, 0.470076, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6dnv"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="Animation" id="Animation_ooxj4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pfu3g"]
+resource_name = "blur"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 0.896, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sgx18"]
+_data = {
+&"RESET": SubResource("Animation_ooxj4"),
+&"blur": SubResource("Animation_pfu3g")
+}
+
+[node name="Pausemenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qwpam")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_t6dnv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -60.5
+offset_right = 62.5
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -34.0
+offset_right = 46.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+
+[node name="Resume" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_kmvv6")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6ck2w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwpam")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2u7t2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t6dnv")
+text = "Resume"
+
+[node name="Settings" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_kmvv6")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6ck2w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwpam")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2u7t2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t6dnv")
+text = "Settings"
+
+[node name="Main menu" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_kmvv6")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6ck2w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwpam")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2u7t2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t6dnv")
+text = "Main menu
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sgx18")
+}
+
+[connection signal="pressed" from="MainButtons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MainButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtons/Main menu" to="." method="_on_main_menu_pressed"]
