@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2fofanchoh7p"]
+[gd_scene load_steps=17 format=3 uid="uid://d2fofanchoh7p"]
 
 [ext_resource type="Script" uid="uid://bi6ol5xws56m3" path="res://menu.gd" id="1_mae5d"]
 [ext_resource type="Texture2D" uid="uid://bthoiykvg0oew" path="res://pixel-art-game-level-background-600nw-2553891639.webp" id="1_ouk20"]
@@ -39,13 +39,6 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3.5)
-
-[sub_resource type="GDScript" id="GDScript_ecwwl"]
-script/source = "extends Node
-
-var is_fullscreen:bool = false
-const CONFIG_PATH :=\"user://settings.cfg\"
-"
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_4hy44"]
 color = Color(1, 1, 1, 1)
@@ -178,7 +171,6 @@ offset_right = 61.5
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_ecwwl")
 
 [node name="Label" type="Label" parent="Settings"]
 layout_mode = 1

@@ -1,11 +1,12 @@
 extends Node
 
 const CONFIG_PATH := "user://settings.cfg"
-var is_fullscreen: bool = false
+var is_fullscreen: bool = false  # defaultně false
 
 func _ready() -> void:
 	load_settings()
-	apply_fullscreen()
+	# synchronizujeme is_fullscreen s aktuálním stavem okna
+	is_fullscreen = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 
 func apply_fullscreen() -> void:
 	if is_fullscreen:
