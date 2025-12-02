@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://hwqpgiopcuce" path="res://Player/srac.gd" id="1_o34jw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bcbcq"]
-radius = 4.0
+radius = 5.0
 height = 14.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_flunq"]
@@ -14,7 +14,7 @@ script = ExtResource("1_o34jw")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 8)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bcbcq")
 

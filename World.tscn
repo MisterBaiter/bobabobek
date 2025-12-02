@@ -930,3 +930,4 @@ position = Vector2(267, 112)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pausemenu" parent="CanvasLayer" instance=ExtResource("7_wygdx")]
+visible = false

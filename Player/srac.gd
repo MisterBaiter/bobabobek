@@ -118,7 +118,7 @@ func play_current_animation():
 
 	# vybere animaci na základě směru a akce
 	if is_attacking: #nejvyšší priorita akce
-		animation_name = "attack_" + direction_name 
+		animation_name = "attack_" + direction_name
 	elif is_moving: #střední priorita akce
 		animation_name = "run_" + direction_name
 	else: #nejžší priorita akce
