@@ -3,8 +3,10 @@ extends CharacterBody2D
 var speed = 65
 var player_chase = false
 var player = null
+var direction = null
+var direction_normalized = null
 
-func _physics_process(delta):
+func _physics_process(delta_time):
 	if player_chase:
 		move_and_collide(Vector2(0,0))
 	if player_chase:
@@ -12,7 +14,7 @@ func _physics_process(delta):
 		direction = player.position - position
 
 	#Get normalized direction (length = 1)
-		direction_normalized = direction.normalize()
+		direction_normalized = direction.normalized()
 
 	#Move at constant speed
 		position += direction_normalized * speed * delta_time 
