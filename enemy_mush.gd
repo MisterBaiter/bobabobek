@@ -1,38 +1,51 @@
 extends CharacterBody2D
 
-var speed = 65
-var player_chase = false
-var player = null
-var direction = null
-var direction_normalized = null
+@export var speed: float = 100.0
+@export var chase_speed: float = 150.0
+@export var detection_range: float = 300.0
 
-func _physics_process(delta_time):
-	if player_chase:
-		move_and_collide(Vector2(0,0))
-	if player_chase:
-	#Calculate direction vector
-		direction = player.position - position
+var player: Node2D = null
+var is_chasing: bool = false
+var can_see_player: bool = false
 
-	#Get normalized direction (length = 1)
-		direction_normalized = direction.normalized()
-
-	#Move at constant speed
-		position += direction_normalized * speed * delta_time 
-
-		$AnimatedSprite2D.play("Run")
-		
-		if(player.position.x - position.x) < 0:
-			$AnimatedSprite2D.flip_h = true
-		else:
-			$AnimatedSprite2D.flip_h = false
-	else:
-		$AnimatedSprite2D.play("Idle") 
-	
+func _ready():
+	$DetectionArea.body_entered.connect(_on_detection_area_body_entered)
+	$DetectionArea.body_exited.connect(_on_detection_area_body_exited)
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	player = body
-	player_chase = true
+	if body.name == "Player":
+		print("Player detected")
+		player = body
+		is_chasing = true
+		can_see_player = true
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		can_see_player = false
+
+func _physics_process(delta):
+	if is_chasing and player != null and is_instance_valid(player):
+		var direction = (player.global_position - global_position).normalized()
+		velocity = direction * (chase_speed if can_see_player else speed) #pohyb enemaka
+		move_and_slide()
+
+	if not can_see_player:
+		if player != null and is_instance_valid(player):
+			var distance = global_position.distance_to(player.global_position)
+			if distance > detection_range:
+				print("Player too far, stopping chase")
+				stop_chasing()
+	elif not is_chasing:
+		# iddle
+		velocity = Vector2.ZERO
+
+func stop_chasing():
+	is_chasing = false
 	player = null
-	player_chase = false
+	can_see_player = false
+	velocity = Vector2.ZERO
+
+func _draw():
+	# nakreslit range pro konec chasingu
+	if Engine.is_editor_hint():
+		draw_circle(Vector2.ZERO, detection_range, Color(1, 0, 0, 0.1))
