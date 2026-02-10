@@ -6,15 +6,16 @@ var player = null
 
 func _physics_process(delta):
 	# Ladící výpis - můžeš později odstranit
-	print("player_chase: ", player_chase, ", player: ", player)
+	print("player_chase: ", player_chase, ", player exists: ", player != null)
 	
 	if player_chase and player != null:
 		# Spočítat směr k hráči
 		var direction = (player.global_position - global_position).normalized()
-		print("Direction to player: ", direction)
+		print("Direction: ", direction, " Length: ", direction.length())
 		
-		# Použít move_and_collide pro pohyb s detekcí kolizí
-		var collision = move_and_collide(direction * speed * delta)
+		velocity = direction * speed
+		move_and_slide()
+		
 		
 		$AnimatedSprite2D.play("Run")
 		
@@ -28,20 +29,14 @@ func _physics_process(delta):
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	# Ladící výpis
-	print("Body entered detection area: ", body.name)
+	print("=== DETECTION AREA ENTERED ===")
+	print("Body name: ", body.name)
+	print("Body class: ", body.get_class())
 	
-	# Zkus různé způsoby identifikace hráče - uprav podle tvé hry
-	# Možnost 1: Pokud se hráč jmenuje "Player"
 	if body.name == "Player":
 		player = body
 		player_chase = true
 		print("Player detected by name!")
-	
-	# Možnost 2: Pokud má hráč skupinu "player"
-	# elif body.is_in_group("player"):
-	#     player = body
-	#     player_chase = true
-	#     print("Player detected by group!")
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	# Ladící výpis
