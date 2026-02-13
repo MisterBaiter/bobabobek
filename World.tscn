@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cefcvddyatfe5" path="res://World/CliffTileset.png" id="3_eu7l1"]
 [ext_resource type="PackedScene" uid="uid://d0h37aga8shlr" path="res://World/grass.tscn" id="6_p1v5b"]
 [ext_resource type="PackedScene" uid="uid://dvk6cqtgapx3e" path="res://menu2.tscn" id="7_wygdx"]
-[ext_resource type="PackedScene" uid="uid://ceuxxfkfo6hm2" path="res://Enemies/Mushroom/enemy_mush.tscn" id="8_bah7m"]
+[ext_resource type="PackedScene" uid="uid://xjn6v1p0ei16" path="res://Enemies/Mushroom/enemy_mush.tscn" id="8_bah7m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_js7pq"]
 resource_name = "Sand"
@@ -1035,6 +1035,7 @@ position = Vector2(138, 3)
 position = Vector2(267, 112)
 
 [node name="enemy Mush" parent="Ovrwrld" instance=ExtResource("8_bah7m")]
+position = Vector2(378, 53)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
