@@ -10,6 +10,7 @@ height = 14.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_o34jw")
+maxHealth = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

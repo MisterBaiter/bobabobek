@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+class_name Player
+
+signal healthChanged
+
 @onready var animated_sprite = $AnimatedSprite2D
 
 #jména animací a možnosti animace
@@ -11,6 +15,9 @@ var is_attacking: bool = false
 var speed: int =  175
 var attack_cooldown := 0.5
 var attack_timer := 0.0
+
+@export var maxHealth = 30
+@onready var currentHealth: int = maxHealth
 
 # při spuštění:
 func _ready():
@@ -127,3 +134,11 @@ func play_current_animation():
 	# přehraje animaci
 	if animated_sprite.sprite_frames.has_animation(animation_name):
 		animated_sprite.play(animation_name)
+
+func hurtByEnemy(area):
+	currentHealth -= 10
+	if currentHealth < 0:
+		currentHealth = maxHealth
+			
+	isHurt = true
+	healthChanged.emit()
