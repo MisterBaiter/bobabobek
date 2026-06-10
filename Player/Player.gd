@@ -12,10 +12,11 @@ var speed: int =  175
 var attack_cooldown := 0.5
 var attack_timer := 0.0
 
-# při spuštění:
+# při spuštění: 
 func _ready():
 	$Camera2D.make_current()
 	setup_animations()
+	$AttackHitbox.monitoring = false #pri zapnuti je hitbox vypnuty
 
 func setup_animations():
 	# Vytvoří SpriteFrame jako jendotku
