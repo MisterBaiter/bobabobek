@@ -1,7 +1,7 @@
 extends Node2D
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_attack"):
+	#if Input.is_action_just_pressed("ui_attack"): potřebuju zjistit jak se dělá překrytí hit a hurtt oxů    
 		var GrassEffect = load("res://Effects/GrassEffect.tscn")
 		var grassEffect = GrassEffect.instantiate()
 		var world = get_tree().current_scene
